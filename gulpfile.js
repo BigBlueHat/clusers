@@ -23,6 +23,10 @@ gulp.task('default', function() {
     debug: true
   });
 
+  gulp
+    .src(['src/index.html', 'semantic/dist/semantic.min.css'])
+    .pipe(gulp.dest('dist'));
+
   return b.bundle()
     .pipe(source('bundle.js'))
     .pipe(gulp.dest('./dist/'));
