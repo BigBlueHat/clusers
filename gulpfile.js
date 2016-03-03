@@ -10,11 +10,23 @@ var
   build        = require('./semantic/tasks/build')
 ;
 
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
 
 /*******************************
              Tasks
 *******************************/
 
+gulp.task('default', function() {
+  var b = browserify({
+    entries: './src/index.js',
+    debug: true
+  });
+
+  return b.bundle()
+    .pipe(source('bundle.js'))
+    .pipe(gulp.dest('./dist/'));
+});
 
 gulp.task('watch-ui', watch);
 gulp.task('build-ui', build);
