@@ -1,3 +1,5 @@
-# External Gulp Files
+# Make CouchDB style _users Users on Cloudant
 
-This shows how to import [Semantic UI](https://github.com/Semantic-Org/Semantic-UI/) build tasks into your own `gulpfile.js`
+...work in progress...
+
+Support it if you'd like! http://patreon.com/BigBlueHat
