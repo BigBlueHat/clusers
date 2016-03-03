@@ -35,7 +35,7 @@
     </h2>
 
     <form class="ui large form"
-     v-bind:class="{'error': !passwords_match}">
+     :class="{'error': !passwords_match}">
       <div class="ui segment">
         <div class="ui small blue dividing header">
           Admin Credentials
@@ -50,7 +50,7 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="text" name="password" placeholder="Password"
+            <input type="password" name="password" placeholder="Password"
              v-model="admin.password">
           </div>
         </div>
@@ -59,7 +59,7 @@
     <p></p>
     <!-- new user -->
     <form class="ui large form" id="user-maker"
-     v-bind:class="{'error': !passwords_match}">
+     :class="{'error': !passwords_match}">
       <div class="ui stacked segment">
         <div class="ui small blue dividing header">
           New User
@@ -85,7 +85,8 @@
              v-model="new_user.password">
           </div>
         </div>
-        <div class="field" v-bind:class="{'error': !passwords_match}">
+        <div class="field"
+         :class="{'error': !passwords_match}">
           <div class="ui left icon input">
             <i class="lock icon"></i>
             <input type="password" name="confirm" placeholder="Confirm Password"
