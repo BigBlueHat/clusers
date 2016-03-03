@@ -35,8 +35,11 @@
     "gulp-util": "^3.0.6",
     "gulp-watch": "^4.3.3",
     "map-stream": "0.0.6",
+    "pouchdb": "^5.2.1",
+    "pouchdb-users": "^1.0.3",
     "require-dot-file": "^0.4.0",
     "semantic-ui": "^2.0.6",
+    "vue": "^1.0.17",
     "yamljs": "^0.2.3"
   }
 }
