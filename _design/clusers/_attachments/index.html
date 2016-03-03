@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Clusers</title>
+
+  <link rel="stylesheet" href="semantic.min.css" />
+
+  <style type="text/css">
+    body {
+      background-color: #DADADA;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+  </style>
+</head>
+<body>
+  <p></p>
+<div class="ui center aligned grid">
+  <div class="column" id="user-maker">
+    <h2 class="ui teal image header">
+      <div class="content">
+        Create a New User Account
+      </div>
+    </h2>
+
+    <form class="ui large form"
+     :class="{'error': !passwords_match}">
+      <div class="ui segment">
+        <div class="ui small blue dividing header">
+          Admin Credentials
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="username" placeholder="Username"
+             v-model="admin.username">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password" placeholder="Password"
+             v-model="admin.password">
+          </div>
+        </div>
+      </div>
+    </form>
+    <p></p>
+    <!-- new user -->
+    <form class="ui large form" id="user-maker"
+     :class="{'error': !passwords_match}">
+      <div class="ui stacked segment">
+        <div class="ui small blue dividing header">
+          New User
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="username" placeholder="Username"
+             v-model="new_user.username">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="mail icon"></i>
+            <input type="text" name="email" placeholder="E-mail address"
+             v-model="new_user.email">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password" placeholder="Password"
+             v-model="new_user.password">
+          </div>
+        </div>
+        <div class="field"
+         :class="{'error': !passwords_match}">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="confirm" placeholder="Confirm Password"
+             v-model="new_user.confirmpass">
+          </div>
+        </div>
+        <div class="ui error message" v-if="!passwords_match">
+          Be sure those passwords match, kids!
+        </div>
+        <div class="ui fluid large teal submit button"
+         @click="makeUser">
+          Create User
+        </div>
+      </div>
+
+      <div class="ui error message"></div>
+
+    </form>
+  </div>
+</div>
+
+<script src="bundle.js"></script>
+
+</body>
+</html>
