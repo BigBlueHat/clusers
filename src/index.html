@@ -96,7 +96,10 @@
         <div class="ui error message" v-if="!passwords_match">
           Be sure those passwords match, kids!
         </div>
-        <div class="ui fluid large teal submit button">Create User</div>
+        <div class="ui fluid large teal submit button"
+         @click="makeUser">
+          Create User
+        </div>
       </div>
 
       <div class="ui error message"></div>
