@@ -1,16 +1,24 @@
 var Vue = require('vue');
+var PouchDB = require('pouchdb');
+PouchDB.plugin(require('pouchdb-users'));
 
 var cluser = new Vue({
   el: '#user-maker',
   data: {
-    username: '',
-    password: '',
-    confirmpass: '',
-    email: ''
+    admin: {
+      username: '',
+      password: ''
+    },
+    new_user: {
+      username: '',
+      password: '',
+      confirmpass: '',
+      email: ''
+    }
   },
   computed: {
     passwords_match: function() {
-      return this.password === this.confirmpass;
+      return this.new_user.password === this.new_user.confirmpass;
     }
   }
 });

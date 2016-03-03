@@ -25,38 +25,71 @@
   </style>
 </head>
 <body>
-<div class="ui middle aligned center aligned grid">
-  <div class="column">
+  <p></p>
+<div class="ui center aligned grid">
+  <div class="column" id="user-maker">
     <h2 class="ui teal image header">
       <div class="content">
         Create a New User Account
       </div>
     </h2>
-    <form class="ui large form" id="user-maker"
+
+    <form class="ui large form"
      v-bind:class="{'error': !passwords_match}">
-      <div class="ui stacked segment">
+      <div class="ui segment">
+        <div class="ui small blue dividing header">
+          Admin Credentials
+        </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="username" placeholder="Username" v-model="username">
+            <input type="text" name="username" placeholder="Username"
+             v-model="admin.username">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="text" name="password" placeholder="Password"
+             v-model="admin.password">
+          </div>
+        </div>
+      </div>
+    </form>
+    <p></p>
+    <!-- new user -->
+    <form class="ui large form" id="user-maker"
+     v-bind:class="{'error': !passwords_match}">
+      <div class="ui stacked segment">
+        <div class="ui small blue dividing header">
+          New User
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="username" placeholder="Username"
+             v-model="new_user.username">
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="mail icon"></i>
-            <input type="text" name="email" placeholder="E-mail address" v-model="email">
+            <input type="text" name="email" placeholder="E-mail address"
+             v-model="new_user.email">
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password" v-model="password">
+            <input type="password" name="password" placeholder="Password"
+             v-model="new_user.password">
           </div>
         </div>
         <div class="field" v-bind:class="{'error': !passwords_match}">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="confirm" placeholder="Confirm Password" v-model="confirmpass">
+            <input type="password" name="confirm" placeholder="Confirm Password"
+             v-model="new_user.confirmpass">
           </div>
         </div>
         <div class="ui error message" v-if="!passwords_match">
