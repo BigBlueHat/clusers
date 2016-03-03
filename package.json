@@ -12,6 +12,7 @@
   "dependencies": {
     "better-console": "^0.2.4",
     "browserify": "^13.0.0",
+    "couchdb-push": "^2.3.1",
     "del": "^1.2.0",
     "extend": "^3.0.0",
     "gulp": "^3.9.1",
@@ -43,6 +44,7 @@
     "semantic-ui": "^2.0.6",
     "vinyl-source-stream": "^1.1.0",
     "vue": "^1.0.17",
-    "yamljs": "^0.2.3"
+    "yamljs": "^0.2.3",
+    "yargs": "^4.2.0"
   }
 }
