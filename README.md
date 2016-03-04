@@ -1,5 +1,5 @@
-[![MIT License](https://img.shields.io/badge/license-MIT-flat-blue.svg?style=flat)](LICENSE)
-[![Patreon](https://img.shields.io/badge/donate-patreon-flat-orange.svg)](https://www.patreon.com/BigBlueHat)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
+[![Patreon](https://img.shields.io/badge/donate-patreon-orange.svg?style=flat-square)](https://www.patreon.com/BigBlueHat)
 
 # Clusers
 #### Make CouchDB style `_users` Users on Cloudant
