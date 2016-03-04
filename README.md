@@ -26,6 +26,8 @@ Then visit:
 `http://{USER}.cloudant.com/clusers/_design/clusers/index.html` and fill out
 the form. :smiley_cat:
 
+![screenshot](screenshot.png)
+
 # License
 
 MIT
