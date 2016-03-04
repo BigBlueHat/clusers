@@ -20,8 +20,7 @@ var cluser = new Vue({
     new_user: {
       username: '',
       password: '',
-      confirmpass: '',
-      email: ''
+      confirmpass: ''
     }
   },
   computed: {
