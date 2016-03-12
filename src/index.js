@@ -1,5 +1,5 @@
 var Vue = require('vue');
-var PouchDB = require('pouchdb');
+Vue.use(require('vue-pouchdb'), {name: location.origin + '/_users'});
 
 var crypto = require('crypto');
 
@@ -17,7 +17,8 @@ var cluser = new Vue({
       username: '',
       password: '',
       confirmpass: ''
-    }
+    },
+    logged_in: false
   },
   computed: {
     passwords_match: function() {
@@ -27,20 +28,22 @@ var cluser = new Vue({
   methods: {
     makeUser: function() {
       var self = this;
-      var db = new PouchDB(location.origin + '/_users', {
-        auth: {
-          username: self.$refs.loginForm.username,
-          password: self.$refs.loginForm.password
-        }
-      })
+      var admin = self.$refs.loginForm;
+      self.$db.login(admin.username, admin.password)
+        .then(function(resp) {
+          if (resp.ok) {
+            self.logged_in = true;
+          }
+        })
+        .catch(console.log.bind(console));
 
-      db.get('org.couchdb.user:' + self.new_user.username)
+      self.$db.get('org.couchdb.user:' + self.new_user.username)
         .then(function(user) {
           console.log('user exists', user);
         })
         .catch(function(err) {
           var hashAndSalt = generatePasswordHash(self.new_user.password);
-          db.put({
+          self.$db.put({
             _id: 'org.couchdb.user:' + self.new_user.username,
             name: self.new_user.username,
             roles: [],
