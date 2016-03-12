@@ -19,11 +19,11 @@ doesn't just yet.
 ```
 $ npm i
 $ gulp
-$ gulp couchapp --url=http://{API_KEY}:{API_SECRET}@{USER}.cloudant.com/clusers
+$ gulp couchapp --url=https://{API_KEY}:{API_SECRET}@{USER}.cloudant.com/clusers
 ```
 
 Then visit:
-`http://{USER}.cloudant.com/clusers/_design/clusers/index.html` and fill out
+`https://{USER}.cloudant.com/clusers/_design/clusers/index.html` and fill out
 the form. :smiley_cat:
 
 ![screenshot](screenshot.png)

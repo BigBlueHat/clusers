@@ -2,6 +2,7 @@
   "name": "clusers",
   "version": "1.0.0",
   "description": "Make CouchDB style _users Users on Cloudant",
+  "repository": "https://github.com/BigBlueHat/clusers",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
