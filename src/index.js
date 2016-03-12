@@ -13,10 +13,6 @@ function generatePasswordHash(password) {
 var cluser = new Vue({
   el: '#user-maker',
   data: {
-    admin: {
-      username: '',
-      password: ''
-    },
     new_user: {
       username: '',
       password: '',
@@ -33,8 +29,8 @@ var cluser = new Vue({
       var self = this;
       var db = new PouchDB(location.origin + '/_users', {
         auth: {
-          username: self.admin.username,
-          password: self.admin.password
+          username: self.$refs.loginForm.username,
+          password: self.$refs.loginForm.password
         }
       })
 
@@ -59,5 +55,8 @@ var cluser = new Vue({
           .catch(console.log.bind(console));
         });
     }
+  },
+  components: {
+    'login-form': require('./login-form')
   }
 });

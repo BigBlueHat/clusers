@@ -1,0 +1,27 @@
+<form class="ui large form"
+ :class="{'error': !passwords_match}">
+  <h2 class="ui teal image header">
+    <div class="content">
+      Create a New User Account
+    </div>
+  </h2>
+  <div class="ui segment">
+    <div class="ui small blue dividing header">
+      Admin Credentials
+    </div>
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="user icon"></i>
+        <input type="text" name="username" placeholder="Username"
+         v-model="username">
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="lock icon"></i>
+        <input type="password" name="password" placeholder="Password"
+         v-model="password">
+      </div>
+    </div>
+  </div>
+</form>

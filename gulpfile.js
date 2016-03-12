@@ -12,6 +12,7 @@ var
 
 var argv = require('yargs').argv;
 var browserify = require('browserify');
+var partialify = require('partialify');
 var push = require('couchdb-push');
 var source = require('vinyl-source-stream');
 
@@ -27,7 +28,8 @@ if ('url' in argv) {
 gulp.task('default', function() {
   var b = browserify({
     entries: './src/index.js',
-    debug: true
+    debug: true,
+    transform: [partialify]
   });
 
   gulp

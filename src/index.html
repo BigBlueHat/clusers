@@ -28,34 +28,8 @@
   <p></p>
 <div class="ui center aligned grid">
   <div class="column" id="user-maker">
-    <h2 class="ui teal image header">
-      <div class="content">
-        Create a New User Account
-      </div>
-    </h2>
 
-    <form class="ui large form"
-     :class="{'error': !passwords_match}">
-      <div class="ui segment">
-        <div class="ui small blue dividing header">
-          Admin Credentials
-        </div>
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <input type="text" name="username" placeholder="Username"
-             v-model="admin.username">
-          </div>
-        </div>
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password"
-             v-model="admin.password">
-          </div>
-        </div>
-      </div>
-    </form>
+    <login-form v-ref:login-form></login-form>
     <p></p>
     <!-- new user -->
     <form class="ui large form" id="user-maker"
