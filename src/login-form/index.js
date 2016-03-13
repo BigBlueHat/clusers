@@ -5,5 +5,10 @@ module.exports = {
       username: '',
       password: ''
     }
+  },
+  methods: {
+    login: function() {
+      this.$dispatch('login', this.username, this.password);
+    }
   }
 };

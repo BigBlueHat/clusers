@@ -29,14 +29,19 @@
 <div class="ui center aligned grid">
   <div class="column" id="user-maker">
 
-    <login-form v-ref:login-form></login-form>
+    <login-form v-ref:login-form v-if="!logged_in"></login-form>
+    <div v-else>
+      <h1 class="ui header">Welcome {{admin.name}}!</h1>
+      <a class="ui button" @click="logout">logout</a>
+    </div>
     <p></p>
     <!-- new user -->
     <form class="ui large form" id="user-maker"
-     :class="{'error': !passwords_match}">
+     :class="{'error': !passwords_match}"
+     v-if="logged_in">
       <div class="ui stacked segment">
         <div class="ui small blue dividing header">
-          New User
+          Create a New User
         </div>
         <div class="field">
           <div class="ui left icon input">
