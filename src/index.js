@@ -14,6 +14,7 @@ var cluser = new Vue({
   el: '#user-maker',
   data: {
     new_user: {
+      exists: false,
       username: '',
       password: '',
       confirmpass: ''
@@ -26,6 +27,11 @@ var cluser = new Vue({
     },
     passwords_match: function() {
       return this.new_user.password === this.new_user.confirmpass;
+    }
+  },
+  watch: {
+    'new_user.username': function() {
+      this.new_user.exists = false;
     }
   },
   created: function() {
@@ -67,7 +73,7 @@ var cluser = new Vue({
 
       self.$db.get('org.couchdb.user:' + self.new_user.username)
         .then(function(user) {
-          console.log('user exists', user);
+          self.new_user.exists = true;
         })
         .catch(function(err) {
           var hashAndSalt = generatePasswordHash(self.new_user.password);
@@ -83,7 +89,14 @@ var cluser = new Vue({
           .then(function(resp) {
             console.log('new user', resp);
           })
-          .catch(console.log.bind(console));
+          .catch(function(err) {
+            if (err.status === 409) {
+              // user exists, throw error
+              self.new_user.exists = true;
+            } else {
+              console.log(err);
+            }
+          });
         });
     }
   },

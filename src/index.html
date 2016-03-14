@@ -30,53 +30,60 @@
   <div class="column" id="user-maker">
 
     <login-form v-ref:login-form v-if="!logged_in"></login-form>
-    <div v-else>
-      <h1 class="ui header">Welcome {{admin.name}}!</h1>
-      <a class="ui button" @click="logout">logout</a>
-    </div>
-    <p></p>
-    <!-- new user -->
-    <form class="ui large form" id="user-maker"
-     :class="{'error': !passwords_match}"
-     v-if="logged_in">
-      <div class="ui stacked segment">
-        <div class="ui small blue dividing header">
-          Create a New User
-        </div>
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <input type="text" name="username" placeholder="Username"
-             v-model="new_user.username">
-          </div>
-        </div>
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password"
-             v-model="new_user.password">
-          </div>
-        </div>
-        <div class="field"
-         :class="{'error': !passwords_match}">
-          <div class="ui left icon input">
-            <i class="lock icon"></i>
-            <input type="password" name="confirm" placeholder="Confirm Password"
-             v-model="new_user.confirmpass">
-          </div>
-        </div>
-        <div class="ui error message" v-if="!passwords_match">
-          Be sure those passwords match, kids!
-        </div>
-        <div class="ui fluid large teal submit button"
-         @click="makeUser">
-          Create User
-        </div>
-      </div>
 
-      <div class="ui error message"></div>
+    <section v-else>
+      <h1 class="ui header">
+        Welcome {{admin.name}}!
+        <a class="ui right floated basic button" @click="logout">
+          <i class="sign out icon"></i>
+          Logout</a>
+      </h1>
+      <p></p>
+      <!-- new user -->
+      <form class="ui large form" id="user-maker"
+        :class="{'error': !passwords_match, 'error': new_user.exists}">
+        <div class="ui stacked segment">
+          <div class="ui small blue dividing header">
+            Create a New User
+          </div>
+          <div class="field"
+           :class="{'error': new_user.exists}">
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <input type="text" name="username" placeholder="Username"
+               v-model="new_user.username">
+            </div>
+          </div>
+          <div class="ui error message" v-if="new_user.exists">
+            Hmm... {{new_user.username}} exists already.
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <input type="password" name="password" placeholder="Password"
+               v-model="new_user.password">
+            </div>
+          </div>
+          <div class="field"
+           :class="{'error': !passwords_match}">
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <input type="password" name="confirm" placeholder="Confirm Password"
+               v-model="new_user.confirmpass">
+            </div>
+          </div>
+          <div class="ui error message" v-if="!passwords_match">
+            Be sure those passwords match, kids!
+          </div>
+          <div class="ui fluid large teal submit button"
+           @click="makeUser">
+            Create User
+          </div>
+        </div>
 
-    </form>
+        <div class="ui error message"></div>
+      </form>
+    </section>
   </div>
 </div>
 
