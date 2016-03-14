@@ -39,9 +39,16 @@
           Logout</a>
       </h1>
       <p></p>
+      <!-- user created success message -->
+      <div class="ui success message"
+       v-if="ui.user_created !== false">
+        <i class="close icon" @click="ui.user_created = false"></i>
+        <strong>{{ui.user_created}}</strong> user created! Need another?
+      </div>
+
       <!-- new user -->
       <form class="ui large form" id="user-maker"
-        :class="{'error': !passwords_match, 'error': new_user.exists}">
+        :class="{'error': form_has_error}">
         <div class="ui stacked segment">
           <div class="ui small blue dividing header">
             Create a New User

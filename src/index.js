@@ -19,7 +19,10 @@ var cluser = new Vue({
       password: '',
       confirmpass: ''
     },
-    admin: {}
+    admin: {},
+    ui: {
+      user_created: false
+    }
   },
   computed: {
     logged_in: function() {
@@ -27,6 +30,9 @@ var cluser = new Vue({
     },
     passwords_match: function() {
       return this.new_user.password === this.new_user.confirmpass;
+    },
+    form_has_error: function() {
+      return Boolean(!this.passwords_match || this.new_users.exists);
     }
   },
   watch: {
@@ -87,7 +93,11 @@ var cluser = new Vue({
             type: 'user'
           })
           .then(function(resp) {
-            console.log('new user', resp);
+            if (resp.ok) {
+              // reset new_user to original data values
+              self.new_user = self.$options.data().new_user;
+              self.ui.user_created = self.new_user.username;
+            }
           })
           .catch(function(err) {
             if (err.status === 409) {
